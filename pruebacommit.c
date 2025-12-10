@@ -2,13 +2,14 @@
 //Luis Lira C.I.:31.564.286
 // Fabiola Andrade C.I.:31.209.874
 // Carlos Belmonte C.I:31.722.091
+// Khristian Lima  C.I:28.372.514
 // Keiber Acero C.I:32.589.206
 #include <stdio.h>
 int main(){
 int fortuna=0;
 
 printf("\tADIVINA TU FORTUNA");
-printf("\n\nIngresa un numero del 1 al 3 (0 para salir):");
+printf("\n\nIngresa un numero del 1 al 5 (0 para salir):");
 do{
 
 scanf("%d",&fortuna);
@@ -27,11 +28,15 @@ case 3:
     printf("\nHoy es un buen dia para culpar a un tercero. Si falla tu codigo, fue el sistema operativo.");
     break;
 case 4:
-    pritnf("\nHoy sera el dia que no tengas mas sal que el mar.");
+    printf("\nHoy sera el dia que no tengas mas sal que el mar.");
+break;
+ case 5:
+ 	printf("\n Fracasado no es aquel que lo intento y perdio fracasado es aquel que no lo intento por miedo a perder");
     break;
 default:
     printf("\nSea serio ombe pon la vaina como eh!!\n");
     }
+    
 
 if(fortuna!=0){
     printf("\n\nOtro Numero (0 para salir):");
