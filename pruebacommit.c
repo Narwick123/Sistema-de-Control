@@ -9,9 +9,9 @@
 int main(){
 int fortuna=0;
 
-printf("\nBienvenido a nuestro programa");
+printf("\n\tBienvenido a nuestro programa");
 
-printf("\n\tADIVINA TU FORTUNA");
+printf("\n\t     ADIVINA TU FORTUNA");
 printf("\n\nIngresa un numero del 1 al 5 (0 para salir):");
 do{
 
@@ -34,7 +34,7 @@ case 4:
     printf("\nHoy sera el dia que no tengas mas sal que el mar.");
 break;
  case 5:
- 	printf("\n Fracasado no es aquel que lo intento y perdio fracasado es aquel que no lo intento por miedo a perder");
+ 	printf("\nFracasado no es aquel que lo intento y perdio fracasado es aquel que no lo intento por miedo a perder");
     break;
 default:
     printf("\nSea serio ombe pon la vaina como eh!!\n");
