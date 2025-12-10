@@ -4,11 +4,14 @@
 // Carlos Belmonte C.I:31.722.091
 // Khristian Lima  C.I:28.372.514
 // Keiber Acero C.I:32.589.206
+// Carlos Ruiz C.I:30.663.314
 #include <stdio.h>
 int main(){
 int fortuna=0;
 
-printf("\tADIVINA TU FORTUNA");
+printf("\nBienvenido a nuestro programa");
+
+printf("\n\tADIVINA TU FORTUNA");
 printf("\n\nIngresa un numero del 1 al 5 (0 para salir):");
 do{
 
