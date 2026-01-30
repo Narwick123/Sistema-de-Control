@@ -1,5 +1,6 @@
 //khristian lima 28.372.514
 //Carlos Ruiz 30.663.314
+//Carlos Belmonte 31.722.091
 
 #include <iostream>
 #include <limits>
@@ -18,7 +19,7 @@ struct Estudiante {
 
 int main(){
 	int numeroEstudiantes;
-	char opcion;
+	char opcion,asistencia;
 	
 	cout << "\tSistema de Control de estudiantes en un Taller" << endl;
 	cout <<"\nNo se poseen datos de estudiantes, desea ingresarlos? S/N: ";
@@ -34,7 +35,7 @@ int main(){
 		cout<<"\n¿Cuantos estudiantes desea ingresar al sistema? (indique el numero de estudiantes):";
 	
 	while(!(cin>>numeroEstudiantes)||numeroEstudiantes < 0){
-		count<<"\nERROR:Por favor no ingresar letras ni numeros negativos. Ingrese nuevamente el numero:";
+		cout<<"\nERROR:Por favor no ingresar letras ni numeros negativos. Ingrese nuevamente el numero:";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
@@ -65,6 +66,18 @@ int main(){
             	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			}
 		}
+
+		float suma = 0;
+		
+for(int i = 0; i< numeroEstudiantes; i++){
+	
+			suma = suma + lista[i].nota;
+}
+		
+			float promedio =suma /numeroEstudiantes;
+		
+cout << "\nEl promedio de notas es: " << promedio << endl;
+
 }else{
 	cout<<"\n\nHasta luego, que tenga buen dia";
 }
