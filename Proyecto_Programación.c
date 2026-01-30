@@ -2,6 +2,7 @@
 //Carlos Ruiz 30.663.314
 //Carlos Belmonte 31.722.091
 //Fabiola Andrade 31.209.874
+//Luis Lira 31.564.286
 
 #include <iostream>
 #include <limits>
@@ -17,6 +18,15 @@ struct Estudiante {
 	float nota; 
     bool presente; // true = Asistió, false = Faltó
 };
+
+//Recursividad para calcular las asistencias
+int calcularAsistenciasRecursivo(const vector<Estudiante>& lista, int indice) {
+    if (indice == (int)lista.size()) {
+        return 0;
+    }
+    int actual = (lista[indice].presente) ? 1 : 0;
+    return actual + calcularAsistenciasRecursivo(lista, indice + 1);
+}
 
 int main(){
 	int numeroEstudiantes;
@@ -78,6 +88,11 @@ for(int i = 0; i< numeroEstudiantes; i++){
 			float promedio =suma /numeroEstudiantes;
 		
 cout << "\nEl promedio de notas es: " << promedio << endl;
+
+		//Llamada de la recursividad
+int totalAsistencias = calcularAsistenciasRecursivo(lista, 0);
+    cout << "Total de estudiantes que asistieron: " << totalAsistencias << endl;
+		
 // Opcion para buscar estudiante.
 char deseaBuscar;
         cout << "\n¿Desea buscar algun estudiante en particular? S/N: ";
