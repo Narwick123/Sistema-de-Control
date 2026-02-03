@@ -3,6 +3,8 @@
 //Carlos Belmonte 31.722.091
 //Fabiola Andrade 31.209.874
 //Luis Lira 31.564.286
+//Keiber Acero 32.589.206
+//Orlianis Garcia
 
 #include <iostream>
 #include <limits>
