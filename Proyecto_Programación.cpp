@@ -28,7 +28,7 @@ void guardarDatos(const vector<Estudiante>& lista) {
 	if (archivo.is_open()) {
 		for(size_t i=0;i<lista.size();i++) {
 		//guarda Nombre apellido nota y asistencia
-			archivo << lista[i].nombre << " " << lista [i].apellido << "\t|Nota: " << lista [i].nota << "\t| " << (lista [i].presente ? "Asistente" : "Inasistente") << endl;
+			archivo << lista[i].nombre << " " << lista [i].apellido << " " << lista [i].nota << " " << lista [i].presente << endl;
 		}
 			archivo.close();
 			cout << "\n---Datos guardados correctamente en estudiantes.txt ---" << endl;
@@ -49,6 +49,14 @@ void cargarDatos(vector<Estudiante>& lista) {
 		archivo.close();
 	}
 }
+//--Funcion para mostrar la lista ya guardada--
+void mostrarReporte(const vector<Estudiante>& lista) {
+    cout << "\n================ REPORTE DE ASISTENCIA ================\n";
+    for(const auto& est : lista) { // Usamos 'const auto&' para eficiencia de memoria
+        cout << est.nombre << " " << est.apellido  << "\t| Nota: " << est.nota << "\t| " << (est.presente ? "Presente" : "Ausente") << endl;
+    }
+    cout << "=======================================================\n";
+}
 
 //Recursividad para calcular las asistencias
 int calcularAsistenciasRecursivo(const vector<Estudiante>& lista, int indice) {
@@ -57,6 +65,10 @@ int calcularAsistenciasRecursivo(const vector<Estudiante>& lista, int indice) {
     }
     int actual = (lista[indice].presente) ? 1 : 0;
     return actual + calcularAsistenciasRecursivo(lista, indice + 1);
+}
+// --Función auxiliar para validar S/N y limpiar código repetitivo--
+bool validarSioNo(char &opcion) {
+    return (opcion == 's' || opcion == 'S' || opcion == 'n' || opcion == 'N');
 }
 
 int main(){
@@ -70,13 +82,27 @@ int main(){
 		//Mostrar estado actual
 	if(!lista.empty()) {
 		cout << "\nSe han cargado [" << lista.size() << "] Estudiantes guardados anteriormente." << endl;
+		cout << "-Desea ver los estudiantes anteriores? S/N: ";
+		cin >> opcion;
+		while(!validarSioNo(opcion)){
+				cout << "\nPor favor ingrese una opcion valida (S o N): ";
+            	cin >> opcion;
+		}
+		if(opcion=='S'||opcion=='s'){
+			mostrarReporte(lista);
+		}
 		cout << "-Desea ingresar nuevos estudiantes adicionales? S/N: ";
 		cin >> opcion;
+		while(!validarSioNo(opcion)){
+			
+			cout << "\nPor favor ingrese una opcion valida (S o N): ";
+            cin >> opcion;
+		}
 	} else {
 	cout <<"\nNo se poseen datos de estudiantes, desea ingresarlos? S/N: ";
 	cin >> opcion;
 	
-	while(opcion != 's' && opcion != 'S' && opcion != 'n' && opcion != 'N'){
+	while(!validarSioNo(opcion)){
 			
 			cout << "\nPor favor ingrese una opcion valida (S o N): ";
             cin >> opcion;
@@ -145,6 +171,10 @@ int main(){
 		char deseaBuscar;
         cout << "\n¿Desea buscar algun estudiante en particular? S/N: ";
         cin >> deseaBuscar;
+		while(deseaBuscar != 's' && deseaBuscar != 'S' && deseaBuscar != 'n' && deseaBuscar != 'N'){
+				cout << "\nPor favor ingrese una opcion valida (S o N): ";
+            	cin >> deseaBuscar;
+		}
 
         if (deseaBuscar == 's' || deseaBuscar == 'S') {
             char buscarOtraVez;
@@ -173,9 +203,14 @@ int main(){
 
                 cout << "\n¿Desea buscar otro estudiante? (S para buscar / N para salir): ";
                 cin >> buscarOtraVez;
-
+				while( buscarOtraVez != 's' && buscarOtraVez != 'S' && buscarOtraVez != 'n' && buscarOtraVez != 'N'){
+					cout << "\nPor favor ingrese una opcion valida (S o N): ";
+            		cin >> buscarOtraVez;
+				}
             } while(buscarOtraVez == 's' || buscarOtraVez == 'S');
-        }
+        }else{
+			cout << "\nNo hay datos para procesar ni guardar" << endl;
+		}
 		//Guardamos toda la lista antes de salir
 		guardarDatos(lista);
 	}
