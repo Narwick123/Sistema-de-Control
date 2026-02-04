@@ -28,7 +28,7 @@ void guardarDatos(const vector<Estudiante>& lista) {
 	if (archivo.is_open()) {
 		for(size_t i=0;i<lista.size();i++) {
 		//guarda Nombre apellido nota y asistencia
-			archivo << lista[i].nombre << " " << lista [i].apellido << "\t|Nota: " << lista [i].nota << "\t|Asistencia: " << (lista [i].presente ? "Asistente" : "Inasistente") << endl;
+			archivo << lista[i].nombre << " " << lista [i].apellido << "\t|Nota: " << lista [i].nota << "\t| " << (lista [i].presente ? "Asistente" : "Inasistente") << endl;
 		}
 			archivo.close();
 			cout << "\n---Datos guardados correctamente en estudiantes.txt ---" << endl;
