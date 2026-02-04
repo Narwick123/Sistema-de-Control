@@ -110,10 +110,10 @@ int main(){
 	}
 	if(opcion=='S'||opcion=='s'){
 	
-		cout<<"\n-Cuantos estudiantes desea ingresar al sistema? (indique el numero de estudiantes):";
+		cout<<"\n-Cuantos estudiantes desea ingresar al sistema? (indique el numero de estudiantes): ";
 	
 	while(!(cin>> cantidadNuevos)||cantidadNuevos< 0){
-		cout<<"\nERROR:Por favor no ingresar letras ni numeros negativos. Ingrese nuevamente el numero:";
+		cout<<"\nERROR:Por favor no ingresar letras ni numeros negativos. Ingrese nuevamente el numero: ";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
