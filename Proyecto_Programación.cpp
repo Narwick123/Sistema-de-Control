@@ -24,33 +24,30 @@ struct Estudiante {
 
 //--Funcion para guardar datos en un archivo TXT--
 void guardarDatos(const vector<Estudiante>& lista) {
-ofstream archivo("estudiantes.txt"); //Crea o sobrescribe el archivo
-if (archivo.is_open()) {
-for(size_t i=0;i<lista.size();i++) {
-//guarda Nombre apellido nota y asistencia
-archivo << lista[i].nombre << " "
-	<< lista [i].apellido << " "
-	<< lista [i].nota << " "
-	<< lista [i].presente << endl;
-}
-archivo.close();
-cout << "\n---Datos guardados correctamente en estudiantes.txt ---" << endl;
-} else {
-cout << "\nError al guardar el archivo." << endl;
-}
+	ofstream archivo("estudiantes.txt"); //Crea o sobrescribe el archivo
+	if (archivo.is_open()) {
+		for(size_t i=0;i<lista.size();i++) {
+		//guarda Nombre apellido nota y asistencia
+			archivo << lista[i].nombre << " " << lista [i].apellido << "\t|Nota: " << lista [i].nota << "\t|Asistencia: " << (lista [i].presente ? "Asistente" : "Inasistente") << endl;
+		}
+			archivo.close();
+			cout << "\n---Datos guardados correctamente en estudiantes.txt ---" << endl;
+		} else {
+			cout << "\nError al guardar el archivo." << endl;
+		}
 }
 
 //-- Funcion para cargar datos del archivo TXT--
 void cargarDatos(vector<Estudiante>& lista) {
-ifstream archivo("estudiantes.txt");// Abre el archivo para la lectura
-if (archivo.is_open()) {
-Estudiante est;
-//lee en el mismo orden que guardo
-while (archivo >> est.nombre >> est.apellido >> est.nota >> est.presente) {
-lista.push_back(est);
-}
-archivo.close();
-}
+	ifstream archivo("estudiantes.txt");// Abre el archivo para la lectura
+	if (archivo.is_open()) {
+		Estudiante est;
+		//lee en el mismo orden que guardo
+		while (archivo >> est.nombre >> est.apellido >> est.nota >> est.presente) {
+			lista.push_back(est);
+		}
+		archivo.close();
+	}
 }
 
 //Recursividad para calcular las asistencias
@@ -128,24 +125,24 @@ int main(){
 		//---Actualiza la variable numeroEstudiantes al total real---
 		numeroEstudiantes = lista.size();
 		
-if(numeroEstudiantes > 0) {
+	if(numeroEstudiantes > 0) {
 		float suma = 0;
 		
-for(int i = 0; i< numeroEstudiantes; i++){
+		for(int i = 0; i< numeroEstudiantes; i++){
 	
 			suma = suma + lista[i].nota;
-}
+		}
 		
 			float promedio =suma /numeroEstudiantes;
 		
-cout << "\nEl promedio de notas es: " << promedio << endl;
+		cout << "\nEl promedio de notas es: " << promedio << endl;
 
 		//Llamada de la recursividad
-int totalAsistencias = calcularAsistenciasRecursivo(lista, 0);
-    cout << "Total de estudiantes que asistieron: " << totalAsistencias << endl;
+		int totalAsistencias = calcularAsistenciasRecursivo(lista, 0);
+    	cout << "Total de estudiantes que asistieron: " << totalAsistencias << endl;
 		
-// Opcion para buscar estudiante.
-char deseaBuscar;
+		// Opcion para buscar estudiante.
+		char deseaBuscar;
         cout << "\n¿Desea buscar algun estudiante en particular? S/N: ";
         cin >> deseaBuscar;
 
@@ -179,9 +176,9 @@ char deseaBuscar;
 
             } while(buscarOtraVez == 's' || buscarOtraVez == 'S');
         }
-	//Guardamos toda la lista antes de salir
-	guardarDatos(lista);
-}
+		//Guardamos toda la lista antes de salir
+		guardarDatos(lista);
+	}
 		else{
 			cout << "\nNo hay datos para procesar ni guardar" << endl;
 		}
